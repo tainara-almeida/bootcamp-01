@@ -7,3 +7,5 @@ metadata:
 spec:
   securityPolicy:
     name: gke-ingress-armor-policy # <-- Nome da política do Cloud Armor criada pelo Terraform
+
+
