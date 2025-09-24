@@ -1,0 +1,17 @@
+# k8s/03-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: birthday-app-service
+  namespace: default
+  annotations:
+    # Associa o serviço ao BackendConfig para habilitar o Cloud Armor
+    cloud.google.com/backend-config: '{"default": "armor-backend-config"}'
+spec:
+  type: NodePort # O Ingress gerencia o tráfego, então NodePort ou ClusterIP funcionam
+  selector:
+    app: birthday-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

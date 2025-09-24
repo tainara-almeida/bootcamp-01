@@ -1,0 +1,22 @@
+      containers:
+      - name: birthday-app-container
+        # IMPORTANTE: Substitua pela sua imagem no Artifact Registry
+        image: "us-central1-docker.pkg.dev/YOUR_PROJECT_ID/my-repo/birthday-app:latest"
+        ports:
+        - containerPort: 80
+          name: http # Adicionar um nome à porta é uma boa prática
+        # Probes para garantir que a aplicação está saudável e pronta para receber tráfego.
+        # O GKE usa essas verificações para gerenciar o ciclo de vida do pod.
+        readinessProbe:
+          httpGet:
+            path: /index.html # Verifica se o arquivo principal está sendo servido
+            port: http # Usa o nome da porta definida acima
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: 80 # Pode usar o nome ou o número da porta
+          initialDelaySeconds: 15
+          periodSeconds: 20
+

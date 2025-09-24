@@ -1,0 +1,37 @@
+<!-- app/index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Mensagens de Aniversário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mensagem de Aniversário Mágica ✨</h1>
+        <p>Escreva uma mensagem de aniversário e a enviaremos para a nuvem!</p>
+        <div class="card">
+            <form id="birthday-form">
+                <label for="recipient-name">Nome do Aniversariante:</label>
+                <input type="text" id="recipient-name" name="recipient-name" required>
+
+                <label for="message">Sua Mensagem:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Enviar para a Fila (Pub/Sub)</button>
+            </form>
+            <div id="confirmation" class="hidden">
+                <p>✅ Mensagem enviada com sucesso para o tópico Pub/Sub!</p>
+            </div>
+        </div>
+        <footer>
+            <p>Hospedado no GKE Autopilot | Protegido pelo Cloud Armor</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
