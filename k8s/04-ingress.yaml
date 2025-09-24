@@ -5,8 +5,15 @@ metadata:
   name: birthday-app-ingress
   namespace: default
 spec:
-  defaultBackend:
-    service:
-      name: birthday-app-service
-      port:
-        number: 80
+ #É uma boa prática usar 'rules' em vez de 'defaultBackend' para ser mais explícito.
+  # Isso também facilita a adição de novas rotas (ex: /api) no futuro.
+  rules:
+  - http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: birthday-app-service
+            port:
+              number: 80
